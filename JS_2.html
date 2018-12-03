@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>Javascript Assignment 2</title>
+    </head>
+    <body onload=santacalls()>
+
+        <input type="text" id="uname" placeholder="Username" onfocus="removeError(id)"/><br/><br/>
+        
+        <input type="password" id="pwd" placeholder="Password" onfocus="removeError(id)"/><br/><br/>
+        
+        <input type="text" id="fname" placeholder="Firstname" onfocus="removeError(id)"/><br/><br/>
+        
+        <input type="text" id="lname" placeholder="Lastname" onfocus="removeError(id)"/><br/><br/>
+        
+        <input type="text" id="email" placeholder="Email ID" onfocus="removeError(id)"/><br/><br/>
+        
+        <div id="gender">
+            <input type="radio" id="male" name="gender" value="male" onfocus="removeGError(name)"/>Male<br/><br/>
+            <input type="radio" id="female" name="gender" value="female" onfocus="removeGError(name)"/>Female<br/><br/>
+        </div>
+
+        <input type="text" id="loc" placeholder="Location" onfocus="removeError(id)"/><br/><br/>
+        
+        <button id="save">Save the Form</button><br/><br/>
+        
+        <div id="display"></div>
+        
+        <script src="JS_2.js"></script>
+        <script>
+                function santacalls(){
+                    //alert("Your data is saved!!");
+                    if(localStorage.a_users){
+                       // var users=[];
+                        users=JSON.parse(localStorage.getItem("a_users"));
+                        console.log("hdshsdkds"+users);
+                    var tableContent=`<table border="1">
+                        <tr>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Email</th>
+                            <th>Location</th>
+                        </tr>`;
+                        var len=users.length;
+                        for(var i=0;i<len;i++)
+                        {
+                            console.log(users[i]);
+                            tableContent+="<tr>";
+                            tableContent+="<td>"+users[i].Firstname+"</td>";
+                            tableContent+="<td>"+users[i].Lastname+"</td>";
+                            tableContent+="<td>"+users[i].Email_ID+"</td>";
+                            tableContent+="<td>"+users[i].Location+"</td></tr>";
+                        }
+                        tableContent+="</table>";
+                        //console.log(tableContent);
+                        document.getElementById("display").innerHTML=tableContent;
+                    }
+                }   
+                </script>
+    </body>
+</html>
